@@ -44,11 +44,6 @@ The implementation is intentionally lightweight and reproducible: it relies on *
   * sanitize/trim extremely long texts to avoid model timeouts
   * defensive cleanup (unicode normalization, whitespace cleanup)
 
-**Key design decisions**
-
-* **Keep preprocessing minimal and robust**: the dataset is user-generated and messy; heavy preprocessing can remove meaning. I focus on stability and consistent formatting.
-* **A single internal “review dict” schema** used across endpoints and report generation, so later steps don’t depend on raw RSS shapes.
-
 ---
 
 ### 3) Metrics Calculation (`src/data_process.py`)
@@ -62,10 +57,6 @@ The implementation is intentionally lightweight and reproducible: it relies on *
 
 * rating distribution is computed from extracted ratings and included in the report
 * average rating and summary stats are computed in the report pipeline so the report endpoint always represents the same data sample as the charts and insights
-
-**Key design decisions**
-
-* **Metrics are computed from exactly the same review sample** that the report uses (no mismatch between “raw reviews” and “metrics”).
 
 ---
 
@@ -147,8 +138,6 @@ The implementation is intentionally lightweight and reproducible: it relies on *
 **Key design decisions**
 
 * **Report as the primary “presentation artifact”**: reviewers can open one PDF and see everything (metrics + visuals + text insights).
-* **Charts are generated per request** using a temp folder, then embedded into the PDF. This keeps the API stateless and container-friendly.
-
 ---
 
 ## Running locally
