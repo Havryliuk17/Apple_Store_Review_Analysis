@@ -1,0 +1,22 @@
+services:
+  review-analyzer:
+    build: .
+    container_name: review-analyzer
+    ports:
+      - "8000:8000"
+    environment:
+      USE_GPU: "0"
+      SENTIMENT_MODEL: "distilbert-base-uncased-finetuned-sst-2-english"
+      NEUTRAL_THRESHOLD: "0.65"
+
+      HF_HOME: "/data/hf"
+      TRANSFORMERS_CACHE: "/data/hf/transformers"
+      MPLCONFIGDIR: "/tmp/matplotlib"
+
+    volumes:
+      - hf_cache:/data/hf
+
+    restart: unless-stopped
+
+volumes:
+  hf_cache:
