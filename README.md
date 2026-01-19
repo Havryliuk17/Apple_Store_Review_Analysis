@@ -4,6 +4,8 @@ This project implements an end-to-end pipeline to **collect App Store reviews**,
 
 The implementation is intentionally lightweight and reproducible: it relies on **public Apple endpoints** (iTunes Search API + App Store RSS customer reviews feed) rather than private APIs or scraping-heavy approaches, and it produces an “all-in-one” **PDF report** that bundles metrics, charts, and actionable recommendations.
 
+## Demo video
+- Video: <https://drive.google.com/file/d/1kZXkrFP-WxvEIRKFwkDOm_sHqPlNpsdc/view?usp=sharing>
 ---
 
 ## What I built (and where)
